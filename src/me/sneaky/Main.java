@@ -63,6 +63,7 @@ import me.sneaky.spawnprotection.sProtectionListener;
 import me.sneaky.stats.Stats;
 import me.sneaky.stats.StatsUtils;
 import me.sneaky.stats.killstreaks.Killstreak;
+import me.sneaky.utils.ScoreBoard;
 import me.sneaky.utils.ServerHighRam;
 
 import org.bukkit.Material;
@@ -105,12 +106,13 @@ public class Main extends JavaPlugin implements Listener{
 	}
 	
 	public void onEnable() {
+		new Config(this);
 		Config.createAllFiles();
 		this.anticheat.checkHax();
 		SetupCMD();
 		Setup();
 		timeSecondLoop = getServer().getScheduler().scheduleSyncRepeatingTask(this, new TimeSecondLoop(), 1l, 20l);
-		getServer().getScheduler().scheduleSyncRepeatingTask(this, new ServerHighRam(), 0, 20 * 60l);
+		getServer().getScheduler().scheduleSyncRepeatingTask(this, new ScoreBoard(this), 0, 20);
 		for(sKits kit : sKits.values()){
 			kits.add(kit);
 		}

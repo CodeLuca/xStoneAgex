@@ -32,7 +32,7 @@ public class KitGUI implements Listener{
 	  
 	  
 	  public ItemStack choose(){
-		  ItemStack item = new ItemStack(Material.FIRE);
+		  ItemStack item = new ItemStack(Material.HOPPER);
 		  ItemMeta iMeta = item.getItemMeta();
 		  iMeta.setDisplayName("Choose This Kit");
 		  item.setItemMeta(iMeta);
@@ -185,16 +185,16 @@ public class KitGUI implements Listener{
 	  
 	  public void openPageForKit(Player player, sKits kit, boolean b){
 			Inventory inv = Bukkit.createInventory(null, 54, ChatColor.RED + ChatColor.BOLD.toString() + kit.toString());
-			if(b == true){
-			inv.setItem(4, back());
-			}else{
-			inv.setItem(4, backBuyKit());	
-			}
 			if(player.hasPermission("skits.kit." + kit.toString().toLowerCase())){
 			inv.setItem(13, choose());
 			}else{
 			inv.setItem(13, donate());
 			inv.setItem(13, buykit(kit));
+			}
+			if(b == true){
+			inv.setItem(4, back());
+			}else{
+			inv.setItem(4, backBuyKit());	
 			}
 			inv.setItem(31, info(kit));
 			inv.setItem(37, kitItems());

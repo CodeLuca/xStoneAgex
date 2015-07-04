@@ -32,6 +32,7 @@ public class Config {
 	}
 
 	public static void createAllFiles(){
+		
 		if(!(configFile.exists())){
 		      try
 		      {

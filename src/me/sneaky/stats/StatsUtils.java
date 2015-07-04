@@ -17,11 +17,12 @@ public class StatsUtils {
 	  }
 	  
 	  public void addPlayer(Player player){
-		  if(Config.getStatsConfig().getConfigurationSection("stats." + player.getUniqueId().toString()) != null){
+		  if(Config.getStatsConfig().getConfigurationSection("stats." + player.getUniqueId().toString()) == null){
 			  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".kills", 0);
 			  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".deaths", 0);
 			  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", 0);
 			  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".hks", 0);
+			  Config.saveStatsFile();
 		  }
 	  }
 	  
@@ -56,22 +57,27 @@ public class StatsUtils {
 	  
 	  public void addKills(Player player) throws Exception{
 		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".kills", getKills(player) + 1);
+		  Config.saveStatsFile();
 	  }
 	  
 	  public void addDeaths(Player player) throws Exception{
 		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".deaths", getDeaths(player) + 1);
+		  Config.saveStatsFile();
 	  }
 	  
 	  public void addCredits(Player player, int amnt) throws Exception{
 		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", getKills(player) + amnt);
+		  Config.saveStatsFile();
 	  }
 	  
 	  public void removeCredits(Player player, Integer i) throws Exception{
 		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", getKills(player) - i);
+		  Config.saveStatsFile();
 	  }
 	  	
 	  public void setHKS(Player player, Integer i) throws Exception{
 		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".hks", i);
+		  Config.saveStatsFile();
 	  }
 	  
 	  

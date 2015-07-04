@@ -1,8 +1,7 @@
-name: StoneAgeKits
+name: VoidKits
 version: 2.0
 main: me.sneaky.Main
-description: StoneAge
-
+description: VoidKits
 commands:
     sg:
     cwars:

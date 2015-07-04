@@ -34,7 +34,7 @@ public class FishingLine extends EntityFishingHook {
     @Override
     public void h(){
         if(item != null){
-            ItemStack hand = this.owner.bz();
+            ItemStack hand = this.owner.bY();
             boolean shouldRemove = false;
 
             if(this.owner.dead || !(this.owner.isAlive())){
