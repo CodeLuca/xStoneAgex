@@ -47,7 +47,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 
 import me.sneaky.Main;
 import me.sneaky.events.custom.TimeSecondEvent;
@@ -344,7 +344,7 @@ public class KitsListener implements Listener {
 		      {
 		        Player player = event.getPlayer();
 				if(p.util.hasKit(player, sKits.Grappler)){
-		        net.minecraft.server.v1_7_R4.Item item = (net.minecraft.server.v1_7_R4.Item) net.minecraft.server.v1_7_R4.Items.LEASH;
+		        net.minecraft.server.v1_8_R1.Item item = (net.minecraft.server.v1_8_R1.Item) net.minecraft.server.v1_8_R1.Items.LEAD;
 		if (((event.getAction() == Action.LEFT_CLICK_AIR) && (event.getMaterial() == Material.getMaterial(420))) || ((event.getAction() == Action.LEFT_CLICK_BLOCK) && (event.getMaterial() == Material.getMaterial(420)))) {
 			if(!p.util.isOnCD(player)){
 		    if(grappler.get(player) != null){

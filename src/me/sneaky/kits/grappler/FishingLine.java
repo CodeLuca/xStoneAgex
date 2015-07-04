@@ -3,18 +3,18 @@ package me.sneaky.kits.grappler;
 import java.util.HashMap;
 import java.util.List;
 
-import net.minecraft.server.v1_7_R4.EntityFishingHook;
-import net.minecraft.server.v1_7_R4.EntityHuman;
-import net.minecraft.server.v1_7_R4.Item;
-import net.minecraft.server.v1_7_R4.ItemStack;
-import net.minecraft.server.v1_7_R4.PacketPlayOutEntityDestroy;
+import net.minecraft.server.v1_8_R1.EntityFishingHook;
+import net.minecraft.server.v1_8_R1.EntityHuman;
+import net.minecraft.server.v1_8_R1.Item;
+import net.minecraft.server.v1_8_R1.ItemStack;
+import net.minecraft.server.v1_8_R1.PacketPlayOutEntityDestroy;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_7_R4.CraftWorld;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R1.CraftWorld;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
@@ -34,7 +34,7 @@ public class FishingLine extends EntityFishingHook {
     @Override
     public void h(){
         if(item != null){
-            ItemStack hand = this.owner.be();
+            ItemStack hand = this.owner.bY();
             boolean shouldRemove = false;
 
             if(this.owner.dead || !(this.owner.isAlive())){
@@ -49,7 +49,7 @@ public class FishingLine extends EntityFishingHook {
                 }
             }
 
-            if(this.e(this.owner) > 9999999.0D){
+            if(this.g(this.owner) > 9999999.0D){
                 shouldRemove = true;
             }
 
@@ -106,7 +106,7 @@ public class FishingLine extends EntityFishingHook {
 
 	@SuppressWarnings("deprecation")
 	public void spawn(Location loc){
-        net.minecraft.server.v1_7_R4.World nmsWorld = ((CraftWorld) loc.getWorld()).getHandle();
+        net.minecraft.server.v1_8_R1.World nmsWorld = ((CraftWorld) loc.getWorld()).getHandle();
         
         Snowball snow = this.owner.getBukkitEntity().launchProjectile(Snowball.class);
         
