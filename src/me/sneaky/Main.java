@@ -105,7 +105,7 @@ public class Main extends JavaPlugin implements Listener{
 	}
 	
 	public void onEnable() {
-		MySqlManager.setupSQL();
+		Config.createAllFiles();
 		this.anticheat.checkHax();
 		SetupCMD();
 		Setup();
