@@ -1,0 +1,43 @@
+name: StoneAgeKits
+version: 2.0
+main: me.sneaky.Main
+description: StoneAge
+
+commands:
+    sg:
+    cwars:
+    hg:
+    tntrun:
+    anvil:
+    competitive:
+    oitc:
+    drace:
+    spectate:
+    event:
+    freekitday:
+    brackets:
+        aliases: [b]
+    clan:
+        aliases: [c]
+    admin:
+    ban:
+    broadcast:
+    build:
+    cadd:
+    clearchat:
+        aliases: [cc]
+    ip:
+    kick:
+    mutechat:
+        aliases: [mc]
+    help:
+    ping:
+    kit:
+    op:
+    duelpos:
+    stats:
+    1v1:
+    sprot:
+    feast:
+    block:
+    tag:
