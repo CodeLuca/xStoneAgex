@@ -190,7 +190,7 @@ public class KitGUI implements Listener{
 			}else{
 			inv.setItem(4, backBuyKit());	
 			}
-			if(player.hasPermission("skits.kit." + kit.toString().toLowerCase())){
+			if(player.hasPermission("skits.kit." + kit.toString().toLowerCase()) || player.isOp()){
 			inv.setItem(13, choose());
 			}else{
 			inv.setItem(13, donate());
