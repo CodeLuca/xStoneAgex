@@ -167,87 +167,10 @@ public class Stats implements CommandExecutor, Listener {
 			p.stats.addCredits(killer, 50);
 			p.chat.sendMessagePlayer(killer, "You Recieved 50 Credits for Killing " + player.getName());
 		}
-		
-		if(p.stats.getCurrentKillStreak(killer) == 5){
-			Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + " Is On A Killstreak Of 5!");
-			boolean b = false;
-			for(int i = 0; i < 8; i++){
-				if(killer.getInventory().getItem(i) != null){
-				if(killer.getInventory().getItem(i).getType() == Material.AIR || killer.getInventory().getItem(i).getType() == Material.MUSHROOM_SOUP){
-					if(b == false){
-						killer.getInventory().setItem(i, Killstreak.airstrikeItem());
-						b = true;
-					}
-				}
-				}
-			}
-		}
-		
-		if(p.stats.getCurrentKillStreak(killer) == 8){
-			Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + " Is On A Killstreak Of 8!");
-			boolean b = false;
-			for(int i = 0; i < 8; i++){
-				if(killer.getInventory().getItem(i) != null){
-				if(killer.getInventory().getItem(i).getType() == Material.AIR || killer.getInventory().getItem(i).getType() == Material.MUSHROOM_SOUP){
-					if(b == false){
-						killer.getInventory().setItem(i, Killstreak.sentryItem());
-						b = true;
-					}
-				}
-				}
-			}
-		}
-		
-		if(p.stats.getCurrentKillStreak(killer) == 11){
-			Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + " Is On A Killstreak Of 11!");
-			boolean b = false;
-			for(int i = 0; i < 8; i++){
-				if(killer.getInventory().getItem(i) != null){
-				if(killer.getInventory().getItem(i).getType() == Material.AIR || killer.getInventory().getItem(i).getType() == Material.MUSHROOM_SOUP){
-					if(b == false){
-						killer.getInventory().setItem(i, Killstreak.predatorItem());
-						b = true;
-					}
-				}
-				}
-			}
-		}
-		
-		
-		if(p.stats.getCurrentKillStreak(killer) == 15){
-			Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + " Is On A Killstreak Of 15!");
-			Killstreak.attackdogs(killer);
-		}
-		
-		if(p.stats.getCurrentKillStreak(killer) == 25){
-			Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + " Is On A Killstreak Of 25!");
-			Killstreak.nuke(killer);
-		}
-		
-		if(p.stats.getCurrentKillStreak(killer) == 22){
-			Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + " Is On A Killstreak Of 22!");
-			Killstreak.choppergunner(killer);
-		}
-		
-		if(p.stats.getCurrentKillStreak(killer) == 18){
-			Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + " Is On A Killstreak Of 18!");
-			boolean b = false;
-			for(int i = 0; i < 8; i++){
-				if(killer.getInventory().getItem(i) != null){
-				if(killer.getInventory().getItem(i).getType() == Material.AIR || killer.getInventory().getItem(i).getType() == Material.MUSHROOM_SOUP){
-					if(b == false){
-						killer.getInventory().setItem(i, Killstreak.mortarItem());
-						b = true;
-					}
-				}
-				}
-			}
-		}
 		}
 	}
 	
 	
-	  @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, final String[] args){
 		    final Player player = (Player)sender;
 		    if(args.length == 0){

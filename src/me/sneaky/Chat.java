@@ -17,7 +17,7 @@ public class Chat {
 	  }
 	
 		public void sendMessagePlayer(Player player, String msg){
-			player.sendMessage(ChatColor.RED + "StoneAgeKits> " + ChatColor.GRAY + msg);
+			player.sendMessage(ChatColor.RED + "VoidKits> " + ChatColor.GRAY + msg);
 		}
 	
 		
@@ -46,10 +46,10 @@ public class Chat {
 	}
 	
 	public void sendBroadcast(String msg){
-		Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "(StoneAgeKits)" + ChatColor.GOLD + "" + ChatColor.BOLD + msg);
+		Bukkit.broadcastMessage(ChatColor.RED + "VoidKits> " + ChatColor.GRAY + ChatColor.BOLD + msg);
 	}
 	
 	public void sendCustomBroadcast(String title, String msg){
-		Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + "(" + title + ")" + ChatColor.GOLD + "" + ChatColor.BOLD + msg);
+		Bukkit.broadcastMessage(ChatColor.RED + title + "> " + ChatColor.GOLD + ChatColor.BOLD + msg);
 	}
 }

@@ -2,6 +2,7 @@ package me.sneaky.stats;
 
 import org.bukkit.entity.Player;
 
+import me.sneaky.Config;
 import me.sneaky.Main;
 import me.sneaky.mysql.MySqlManager;
 
@@ -16,25 +17,28 @@ public class StatsUtils {
 	  }
 	  
 	  public void addPlayer(Player player){
-		  if(!MySqlManager.sqlContainsPlayer(player)){
-			  MySqlManager.addPlayerToSQL(player);
+		  if(Config.getStatsConfig().getConfigurationSection("stats." + player.getUniqueId().toString()) != null){
+			  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".kills", 0);
+			  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".deaths", 0);
+			  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", 0);
+			  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".hks", 0);
 		  }
 	  }
 	  
 	  public int getCredits(Player player) throws Exception{
-		  return MySqlManager.getIntSQL(player, "credits");
+		  return Config.getStatsConfig().getInt("stats." + player.getUniqueId().toString() + ".credits");
 	  }
 	  
 	  public int getKills(Player player) throws Exception{
-		  return MySqlManager.getIntSQL(player, "kills");
+		  return Config.getStatsConfig().getInt("stats." + player.getUniqueId().toString() + ".kills");
 	  }
 	  
 	  public int getDeaths(Player player) throws Exception{
-		  return MySqlManager.getIntSQL(player, "deaths");
+		  return Config.getStatsConfig().getInt("stats." + player.getUniqueId().toString() + ".deaths");
 	  }
 	  
 	  public int getHKS(Player player) throws Exception{
-		  return MySqlManager.getIntSQL(player, "hks");
+		  return Config.getStatsConfig().getInt("stats." + player.getUniqueId().toString() + ".hks");
 	  }
 	  
 	  public int getCurrentKillStreak(Player player) throws Exception{
@@ -51,28 +55,28 @@ public class StatsUtils {
 	  }
 	  
 	  public void addKills(Player player) throws Exception{
-		  MySqlManager.addIntSQL(player, "kills", 1);
+		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".kills", getKills(player) + 1);
 	  }
 	  
 	  public void addDeaths(Player player) throws Exception{
-		  MySqlManager.addIntSQL(player, "deaths", 1);
+		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".deaths", getDeaths(player) + 1);
 	  }
 	  
 	  public void addCredits(Player player, int amnt) throws Exception{
-		  MySqlManager.addIntSQL(player, "credits", amnt);
+		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", getKills(player) + amnt);
 	  }
 	  
 	  public void removeCredits(Player player, Integer i) throws Exception{
-		  MySqlManager.addIntSQL(player, "credits", i);
+		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", getKills(player) - i);
+	  }
+	  	
+	  public void setHKS(Player player, Integer i) throws Exception{
+		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".hks", i);
 	  }
 	  
 	  
 	  public void addKillToKillStreak(Player player) throws Exception{
 		  p.util.KillStreak.put(player, p.util.KillStreak.get(player) != null ? p.util.KillStreak.get(player) + 1 : 1);
-		  if(getHKS(player) < p.util.KillStreak.get(player)){
-			  p.getConfig().set("stats." + player.getUniqueId() + ".ks",  p.util.KillStreak.get(player));
-			  p.saveConfig();
-		  }
 	  }
 	  
 	  

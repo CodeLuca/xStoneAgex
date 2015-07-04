@@ -18,16 +18,15 @@ public class ScoreBoard implements Runnable{
 	    this.p = instance;
 	  }
 	  
-	  @SuppressWarnings("deprecation")
 	public static void setScoreboard(Player player) throws IllegalStateException, IllegalArgumentException, Exception {
 		    Scoreboard scoreboard = player.getServer().getScoreboardManager().getNewScoreboard();
 		    Objective scoreboardObj = scoreboard.registerNewObjective("test", "dummy");
 		    scoreboardObj.setDisplaySlot(DisplaySlot.SIDEBAR);
 		    scoreboardObj.setDisplayName(ChatColor.RED + "StoneAgeKits");
-		    scoreboardObj.getScore(Bukkit.getOfflinePlayer(ChatColor.GRAY + "Credits: ")).setScore(Main.instance.stats.getCredits(player));
-		    scoreboardObj.getScore(Bukkit.getOfflinePlayer(ChatColor.GRAY + "Kills: ")).setScore(Main.instance.stats.getKills(player));
-		    scoreboardObj.getScore(Bukkit.getOfflinePlayer(ChatColor.GRAY + "Deaths: ")).setScore(Main.instance.stats.getDeaths(player));
-		    scoreboardObj.getScore(Bukkit.getOfflinePlayer(ChatColor.GRAY + "Killstreak: ")).setScore(Main.instance.stats.getCurrentKillStreak(player));
+		    scoreboardObj.getScore(ChatColor.GRAY + "Credits: ").setScore(Main.instance.stats.getCredits(player));
+		    scoreboardObj.getScore(ChatColor.GRAY + "Kills: ").setScore(Main.instance.stats.getKills(player));
+		    scoreboardObj.getScore(ChatColor.GRAY + "Deaths: ").setScore(Main.instance.stats.getDeaths(player));
+		    scoreboardObj.getScore(ChatColor.GRAY + "Killstreak: ").setScore(Main.instance.stats.getCurrentKillStreak(player));
 		    player.setScoreboard(scoreboard);
 		}
 		 
