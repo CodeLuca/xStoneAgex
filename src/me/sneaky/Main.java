@@ -130,6 +130,7 @@ public class Main extends JavaPlugin implements Listener{
 		
 		UtilsAnvil anvil = new UtilsAnvil();
 		UtilsHG hg = new UtilsHG();
+		UtilsSG sg = new UtilsSG();
 		UtilsTNTRun tntrun = new UtilsTNTRun();
 		UtilsChickenWars cwars = new UtilsChickenWars();
 		UtilsOITC oitc = new UtilsOITC();
@@ -144,6 +145,7 @@ public class Main extends JavaPlugin implements Listener{
 		oitc.stopGame();
 		drace.stopGame();
 		comp.stopGame();
+		sg.stopGame();
 	}
 
 	public void SetupCMD(){

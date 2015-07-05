@@ -7,6 +7,7 @@ import me.sneaky.events.chickenwars.UtilsChickenWars;
 import me.sneaky.events.deathrace.UtilsDeathRace;
 import me.sneaky.events.hg.UtilsHG;
 import me.sneaky.events.oitc.UtilsOITC;
+import me.sneaky.events.sg.UtilsSG;
 import me.sneaky.events.tntrun.UtilsTNTRun;
 
 import org.bukkit.Bukkit;
@@ -51,6 +52,7 @@ public class Events implements Listener {
 	static UtilsDeathRace drace = new UtilsDeathRace();
 	static UtilsChickenWars cwars = new UtilsChickenWars();
 	static UtilsOITC oitc = new UtilsOITC();
+	static UtilsSG sg = new UtilsSG();
 	
 	public static void newEvent(){
 		/**int rand = new Random().nextInt(5);
@@ -77,6 +79,7 @@ public class Events implements Listener {
 	
 	public enum Minigames{
 		HG,
+		SG,
 		ChickenWars,
 		TNTRun,
 		Anvil,
@@ -91,6 +94,18 @@ public class Events implements Listener {
 		ArrayList<String> lore = new ArrayList<String>();
 		lore.add(ChatColor.GRAY + "Click Here To Host");
 		lore.add(ChatColor.GREEN + "HG");
+		iMeta.setLore(lore);
+		item.setItemMeta(iMeta);
+		return item;
+	}
+	
+	public ItemStack SG(){
+		ItemStack item = new ItemStack(Material.CHEST);
+		ItemMeta iMeta = item.getItemMeta();
+		iMeta.setDisplayName(ChatColor.GOLD + "SG");
+		ArrayList<String> lore = new ArrayList<String>();
+		lore.add(ChatColor.GRAY + "Click Here To Host");
+		lore.add(ChatColor.GREEN + "SG");
 		iMeta.setLore(lore);
 		item.setItemMeta(iMeta);
 		return item;
@@ -157,7 +172,7 @@ public class Events implements Listener {
 	
 	public void openEventGUI(Player player){
 		Inventory inv = Bukkit.createInventory(null, 27, ChatColor.RED + ChatColor.BOLD.toString() + "Events");
-		for(int i = 0; i < 26; i++){
+		for(int i = 0; i < 27; i++){
 		inv.setItem(i, new ItemStack(Material.IRON_FENCE));
 		}
 		
@@ -167,6 +182,7 @@ public class Events implements Listener {
 		inv.setItem(13, Anvil());
 		inv.setItem(14, OITC());
 		inv.setItem(15, DeathRace());
+		inv.setItem(15, SG());
 		player.openInventory(inv);
 	}
 	
@@ -196,6 +212,9 @@ public class Events implements Listener {
 						}
 						if(event.getCurrentItem().equals(DeathRace())){
 							player.chat("/drace host");
+						}
+						if(event.getCurrentItem().equals(SG())){
+							player.chat("/sg host");
 						}
 						
 						event.setCancelled(true);

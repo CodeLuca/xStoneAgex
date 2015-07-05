@@ -55,6 +55,7 @@ import me.sneaky.kits.Kits.sKits;
 import me.sneaky.kits.gladiator.GladiatorListener;
 import me.sneaky.kits.grappler.FishingLine;
 import me.sneaky.kits.grappler.GrapplerState;
+import me.sneaky.spawnprotection.sProtectionListener;
 
 
 public class KitsListener implements Listener {
@@ -668,6 +669,8 @@ public class KitsListener implements Listener {
 				                  if (p.util.hasKit(player, sKits.Stomper)) {
 
 				                          if (event.getCause() == DamageCause.FALL) {
+				                        	  
+				                        	  if(!sProtectionListener.user.contains(player)){
 
 				                                  if (event.getDamage() > 4) {
 
@@ -706,6 +709,7 @@ public class KitsListener implements Listener {
 				                                  }
 				                          if(b == true){
 				                        	  p.util.addCD(player, 20);
+				                          }
 				                          }
 				                          }
 				                          }

@@ -149,6 +149,12 @@ public class UtilsChickenWars implements CommandExecutor {
 	    			sendMSG(player, "No Permission");
 	    			return true;
 	    		}
+	    		
+	    		if(Events.eventHosted != null){
+	    			sendMSG(player, "Only 1 event at the time");
+	    			return true;
+	    		}
+	    		
 	    		if(UtilsChickenWars.countdown == false && UtilsChickenWars.started == false){
 	    			this.countDown();
 	    		}else{

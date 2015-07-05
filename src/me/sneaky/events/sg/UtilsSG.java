@@ -224,6 +224,12 @@ public class UtilsSG implements CommandExecutor {
 	    			sendMSG(player, "No Permission");
 	    			return true;
 	    		}
+	    		
+	    		if(Events.eventHosted != null){
+	    			sendMSG(player, "Only 1 event at the time");
+	    			return true;
+	    		}
+	    		
 	    		if(UtilsSG.countdown == false && UtilsSG.started == false){
 	    			this.countDown();
 	    		}else{

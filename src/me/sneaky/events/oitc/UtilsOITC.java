@@ -179,6 +179,12 @@ public class UtilsOITC implements CommandExecutor {
 	    			sendMSG(player, "No Permission");
 	    			return true;
 	    		}
+	    		
+	    		if(Events.eventHosted != null){
+	    			sendMSG(player, "Only 1 event at the time");
+	    			return true;
+	    		}
+	    		
 	    		if(UtilsOITC.countdown == false && UtilsOITC.started == false){
 	    			this.countDown();
 	    		}else{

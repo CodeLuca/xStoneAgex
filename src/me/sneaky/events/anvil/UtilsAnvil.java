@@ -169,6 +169,12 @@ public class UtilsAnvil implements CommandExecutor {
 	    			sendMSG(player, "No Permission");
 	    			return true;
 	    		}
+	    		
+	    		if(Events.eventHosted != null){
+	    			sendMSG(player, "Only 1 event at the time");
+	    			return true;
+	    		}
+	    		
 	    		if(UtilsAnvil.countdown == false && UtilsAnvil.started == false){
 	    			this.countDown();
 	    		}else{

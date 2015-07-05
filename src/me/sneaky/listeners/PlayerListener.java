@@ -139,7 +139,7 @@ public class PlayerListener implements Listener {
 		  public void onJoin(PlayerPreLoginEvent e)
 		    {
 			if(e.getResult() != Result.ALLOWED){
-				e.setKickMessage("You Have Been Banned For Cheating Buy An Unban At www.StoneAgeKit.enjin.com");
+				e.setKickMessage("You Have Been Banned For Cheating");
 			}
 		      
 		    }
@@ -234,7 +234,7 @@ public class PlayerListener implements Listener {
 	  {
 	      final Player player = e.getPlayer();
 	      
-	      e.setLeaveMessage(ChatColor.BLUE + "StoneAgeKits> " + ChatColor.GOLD + player.getName() + " Got kicked");
+	      e.setLeaveMessage(ChatColor.BLUE + "VoidKits> " + ChatColor.GOLD + player.getName() + " Got kicked");
 	  }
 		
 		@EventHandler
