@@ -22,7 +22,7 @@ public class ScoreBoard implements Runnable{
 		    Scoreboard scoreboard = player.getServer().getScoreboardManager().getNewScoreboard();
 		    Objective scoreboardObj = scoreboard.registerNewObjective("test", "dummy");
 		    scoreboardObj.setDisplaySlot(DisplaySlot.SIDEBAR);
-		    scoreboardObj.setDisplayName(ChatColor.RED + "StoneAgeKits");
+		    scoreboardObj.setDisplayName(ChatColor.RED + "VoidKits");
 		    scoreboardObj.getScore(ChatColor.GRAY + "Credits: ").setScore(Main.instance.stats.getCredits(player));
 		    scoreboardObj.getScore(ChatColor.GRAY + "Kills: ").setScore(Main.instance.stats.getKills(player));
 		    scoreboardObj.getScore(ChatColor.GRAY + "Deaths: ").setScore(Main.instance.stats.getDeaths(player));

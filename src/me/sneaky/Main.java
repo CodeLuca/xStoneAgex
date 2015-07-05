@@ -112,7 +112,7 @@ public class Main extends JavaPlugin implements Listener{
 		SetupCMD();
 		Setup();
 		timeSecondLoop = getServer().getScheduler().scheduleSyncRepeatingTask(this, new TimeSecondLoop(), 1l, 20l);
-		getServer().getScheduler().scheduleSyncRepeatingTask(this, new ScoreBoard(this), 0, 20);
+		getServer().getScheduler().scheduleSyncRepeatingTask(this, new ScoreBoard(this), 1, 20);
 		for(sKits kit : sKits.values()){
 			kits.add(kit);
 		}
@@ -123,8 +123,6 @@ public class Main extends JavaPlugin implements Listener{
 			this.util.allMaterials.add(mat);
 			}
 		}
-		
-		getServer().getScheduler().scheduleSyncRepeatingTask(this, new TimerCompetitive(), 0l, 20l);
 		
 	} 
 	

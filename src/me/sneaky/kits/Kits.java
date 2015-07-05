@@ -39,7 +39,6 @@ public class Kits {
 		Endermage(new ItemStack(Material.PORTAL), 20000),
 		Fisherman(new ItemStack(Material.FISHING_ROD), 20000),
 		Gambler(new ItemStack(Material.WATCH), 8000),
-		Grappler(new ItemStack(Material.LEASH), 22000),
 		Hawk(new ItemStack(Material.FEATHER), 15000),
 		Ironman(new ItemStack(Material.IRON_BLOCK), 10000),
 		Kangaroo(new ItemStack(Material.FIREWORK), 25000),
@@ -146,11 +145,6 @@ public class Kits {
 		case Gambler:
 		    lore.add("Click On Your Watch To Earn");
 		    lore.add("Random Potion Effects");
-			break;
-			
-		case Grappler:
-		    lore.add("Hook Onto Walls And Enemy's");
-		    lore.add("And Launch Yourself Towards Them");
 			break;
 			
 		case Hawk:
@@ -353,10 +347,6 @@ public class Kits {
 			
 		case Gambler:
 			item1 = new ItemStack(Material.WATCH);
-			break;
-			
-		case Grappler:
-			item1 = new ItemStack(Material.LEASH);
 			break;
 			
 		case Hawk:

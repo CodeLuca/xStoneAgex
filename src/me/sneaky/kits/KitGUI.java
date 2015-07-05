@@ -32,7 +32,7 @@ public class KitGUI implements Listener{
 	  
 	  
 	  public ItemStack choose(){
-		  ItemStack item = new ItemStack(Material.HOPPER);
+		  ItemStack item = new ItemStack(Material.FIREBALL);
 		  ItemMeta iMeta = item.getItemMeta();
 		  iMeta.setDisplayName("Choose This Kit");
 		  item.setItemMeta(iMeta);
@@ -48,8 +48,9 @@ public class KitGUI implements Listener{
 	  public ItemStack buykit(sKits kit){
 		  ItemStack item = new ItemStack(Material.ANVIL);
 		  ItemMeta iMeta = item.getItemMeta();
-		  iMeta.setDisplayName("Press Here To Buy The Kit With In Game Money");
+		  iMeta.setDisplayName("Press Here To Buy The Kit");
 		  ArrayList<String> lore = new ArrayList<String>();
+		  lore.add(ChatColor.WHITE + "" + ChatColor.ITALIC + "With In Game Money");
 		  lore.add(ChatColor.GOLD + "This Kit Costs: $" + kit.getPrice());
 		  iMeta.setLore(lore);
 		  item.setItemMeta(iMeta);

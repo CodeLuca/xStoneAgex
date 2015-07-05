@@ -66,12 +66,12 @@ public class StatsUtils {
 	  }
 	  
 	  public void addCredits(Player player, int amnt) throws Exception{
-		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", getKills(player) + amnt);
+		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", getCredits(player) + amnt);
 		  Config.saveStatsFile();
 	  }
 	  
 	  public void removeCredits(Player player, Integer i) throws Exception{
-		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", getKills(player) - i);
+		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", getCredits(player) - i);
 		  Config.saveStatsFile();
 	  }
 	  	
