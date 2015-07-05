@@ -30,11 +30,10 @@ public class build implements CommandExecutor {
 			return true;
 		}
 		
-		if(args.length == 1){
+		if(args.length == 1 || args.length == 0){
 		Player p = (Player) s;
 		
 
-	    if (args[0].equalsIgnoreCase("butter")){
 	    	
 			if (!p.hasPermission("skits.staff.broadcast")) {
 				this.p.chat.noPermMessage(p);
@@ -54,7 +53,6 @@ public class build implements CommandExecutor {
 	        p.sendMessage(ChatColor.RED + "Build " + ChatColor.GRAY + "Mode Desactivated!");
 	        return true;
 	       		}
-	    }
 		}
 		
 		return true;

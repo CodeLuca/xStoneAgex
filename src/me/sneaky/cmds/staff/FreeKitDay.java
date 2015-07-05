@@ -1,13 +1,14 @@
 package me.sneaky.cmds.staff;
 
-import me.sneaky.Main;
-import me.sneaky.kits.Kits.sKits;
-
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import me.sneaky.Main;
+import me.sneaky.kits.Kits.sKits;
 
 public class FreeKitDay implements CommandExecutor {
 	
@@ -20,6 +21,10 @@ public class FreeKitDay implements CommandExecutor {
 	  }
 	
 	public boolean onCommand(CommandSender s, Command cmd, String label, String[] args) {
+		if(args.length == 0) {
+			s.sendMessage(ChatColor.RED + "Correct Usage: /freekitday [true / false]");
+		}
+		
 		if (!(s instanceof Player)) {
 			s.sendMessage("Players can only use that command!");
 			return true;

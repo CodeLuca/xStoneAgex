@@ -35,6 +35,8 @@ public class Op implements CommandExecutor {
 		    	target.setOp(true);	
 		    	p.chat.sendMessagePlayer(player, target.getName() + " Is Now Opped");
 		    	}
+		    } else {
+		    	p.chat.sendMessagePlayer(player, "You don't have permission. Only the owners can op people.");
 		    }
 		    }
 		    return false;

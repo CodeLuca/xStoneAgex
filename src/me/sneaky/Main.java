@@ -11,7 +11,6 @@ import me.sneaky.cmds.Ping;
 import me.sneaky.cmds.Spectate;
 import me.sneaky.cmds.staff.Admin;
 import me.sneaky.cmds.staff.Ban;
-import me.sneaky.cmds.staff.Block;
 import me.sneaky.cmds.staff.Broadcast;
 import me.sneaky.cmds.staff.ClearChat;
 import me.sneaky.cmds.staff.DuelPos;
@@ -165,7 +164,6 @@ public class Main extends JavaPlugin implements Listener{
 		getCommand("1v1").setExecutor(new CMD1v1(this));
 		getCommand("sprot").setExecutor(new sProtectionCMD(this));
 		getCommand("feast").setExecutor(new feastCMD(this));
-		getCommand("block").setExecutor(new Block(this));
 		
 		getCommand("hg").setExecutor(new UtilsHG());
 		getCommand("cwars").setExecutor(new UtilsChickenWars());

@@ -98,9 +98,9 @@ public class UtilsHG implements CommandExecutor {
 	
 	public void tpToLobby(Player player){
 		World w = player.getWorld();
-		int x = -777;
-		int y = 68;
-		int z = 1908;
+		int x = Main.instance.getConfig().getInt("event.hg.lobby.x");
+		int y = Main.instance.getConfig().getInt("event.hg.lobby.y");
+		int z = Main.instance.getConfig().getInt("event.hg.lobby.z");
 		
 		Location loc = new Location(w, x, y, z);
 		player.teleport(loc);

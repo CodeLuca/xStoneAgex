@@ -111,7 +111,7 @@ public class UtilsOITC implements CommandExecutor {
 		bow.addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 10);
 		player.getInventory().setItem(0, bow);
 		
-		ItemStack sword = new ItemStack(Material.WOOD_AXE);
+		ItemStack sword = new ItemStack(Material.WOOD_SWORD);
 		sword.addUnsafeEnchantment(Enchantment.DURABILITY, 10);
 		player.getInventory().setItem(1, sword);
 		

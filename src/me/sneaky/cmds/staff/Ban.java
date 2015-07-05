@@ -34,7 +34,7 @@ public class Ban implements CommandExecutor{
 			    		Player target = Bukkit.getServer().getPlayer(args[0]);
 	                    if (target == null) {
 	                    	if(Bukkit.getServer().getOfflinePlayer(args[0]) != null){
-	    			    		if(args[0].equalsIgnoreCase("sneakylegend") || args[0].equalsIgnoreCase("mrjayharm")
+	    			    		if(args[0].equalsIgnoreCase("sneakylegend") || args[0].equalsIgnoreCase("lucaspeedstack")
 	    			    				|| args[0].equalsIgnoreCase("mrjayharm")){
 	    			    			player.kickPlayer(ChatColor.RED + "DO NOT TRY TO BAN THE OWNER!!!");
 	    			    			return true;
@@ -48,7 +48,7 @@ public class Ban implements CommandExecutor{
 	                        return true;
 	                    	}
 	                    }
-			    		if(args[0].equalsIgnoreCase("sneakylegend") || args[0].equalsIgnoreCase("mrjayharm")
+			    		if(args[0].equalsIgnoreCase("sneakylegend") || args[0].equalsIgnoreCase("lucaspeedstack")
 			    				|| args[0].equalsIgnoreCase("mrjayharm")){
 			    			player.kickPlayer(ChatColor.RED + "DO NOT TRY TO BAN THE OWNER!!!");
 			    			return true;
