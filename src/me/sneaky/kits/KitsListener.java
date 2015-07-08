@@ -1308,14 +1308,20 @@ public class KitsListener implements Listener {
 														if(p.util.hasKit(player, sKits.Glacier)){
 														if(!p.util.isOnCD(player)){
 															
+															Location loc = player.getLocation().getBlock().getLocation();
 															Location loc1 = player.getLocation().getBlock().getRelative(BlockFace.UP).getRelative(BlockFace.UP).getRelative(BlockFace.WEST).getRelative(BlockFace.NORTH).getLocation();
 															Location loc2 = player.getLocation().getBlock().getRelative(BlockFace.DOWN).getRelative(BlockFace.EAST).getRelative(BlockFace.SOUTH).getLocation();
 															
-															final ArrayList<BlockState> bState = new ArrayList<BlockState>();
-															
-															for(Location loc : p.locUtil.getCuboid(loc1, loc2)){
-																bState.add(loc.getBlock().getState());
-																loc.getBlock().setType(Material.ICE);
+															for(final Location lo : p.locUtil.getCuboid(loc1, loc2)){
+																final BlockState b = lo.getBlock().getState();
+																
+																lo.getBlock().setType(Material.ICE);
+													        	p.getServer().getScheduler().scheduleSyncDelayedTask(p, new Runnable(){
+													        		public void run(){
+													        			lo.getBlock().setType(b.getType());
+													        			b.update();
+													        		}
+													        	}, 20 * 3);
 															}
 															
 															player.getLocation().getBlock().getRelative(BlockFace.UP).setType(Material.AIR);
@@ -1323,13 +1329,10 @@ public class KitsListener implements Listener {
 															
 															player.setNoDamageTicks(20 * 3);
 															
+															player.teleport(loc.add(0.50D, 0.50D, 0.50D));
+															
 												        	p.getServer().getScheduler().scheduleSyncDelayedTask(p, new Runnable(){
 												        		public void run(){
-												        			for(BlockState b : bState){
-												        				b.setType(b.getType());
-												        				b.setData(b.getData());
-												        				bState.remove(b);
-												        			}
 												        			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 5, 0));
 												        			player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 5, 0));
 												        		}
