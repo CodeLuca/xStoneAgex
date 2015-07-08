@@ -136,7 +136,7 @@ public class UtilsAnvil implements CommandExecutor {
 	
 	@SuppressWarnings("deprecation")
 	public static void dropAnvils(int percentage){
-		World w = Bukkit.getWorld("stone");
+		World w = Bukkit.getWorld("world");
 		int x1 = Main.instance.getConfig().getInt("event.anvil.pos.1.x");
 		int y1 = Main.instance.getConfig().getInt("event.anvil.pos.1.y");
 		int z1 = Main.instance.getConfig().getInt("event.anvil.pos.1.z");
@@ -150,7 +150,7 @@ public class UtilsAnvil implements CommandExecutor {
 		
 		for(Location loc : Main.instance.locUtil.getCuboid(loc1, loc2)){
 			if(hasChance(percentage)){
-				loc.getBlock().setTypeIdAndData(145, (byte) 15, true);
+				loc.getBlock().setTypeIdAndData(145, (byte) 11, true);
 			}
 		}
 		

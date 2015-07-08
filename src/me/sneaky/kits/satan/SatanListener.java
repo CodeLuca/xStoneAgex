@@ -101,7 +101,7 @@ public class SatanListener implements Listener {
 		  
 		  satan.add(player);
 		  
-		  player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 10, 1));
+		  player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 5, 1));
 		  
 		  player.teleport(loc5);
 		  
@@ -131,7 +131,7 @@ public class SatanListener implements Listener {
 					satanTask.remove(player);
 					
 			  }
-		  }, 20 * 10L);
+		  }, 20 * 5L);
 		  
 		  satanTask.put(player, i);
 		  }
@@ -179,7 +179,7 @@ public class SatanListener implements Listener {
 							p.chat.sendMessagePlayer(player, "You Can't Satan Someone In A Gladiator Fight");
 						}else{
 					createArena(target, 0);
-					p.util.addCD(player, 30);
+					p.util.addCD(player, 40);
 						}
 					}
 					}

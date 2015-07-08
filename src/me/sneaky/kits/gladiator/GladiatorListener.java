@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import me.sneaky.Main;
 import me.sneaky.kits.Kits.sKits;
+import me.sneaky.kits.KitsListener;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -31,7 +32,6 @@ public class GladiatorListener implements Listener {
 	  {
 	    this.p = instance;
 	  }
-	  
 	  
 	  public HashMap<Player, Player> gladiator = new HashMap<Player, Player>();
 	  HashMap<Player, Location> gladiatorLoc = new HashMap<Player, Location>();
@@ -168,6 +168,9 @@ public class GladiatorListener implements Listener {
 				if(player.getItemInHand().getType() == Material.IRON_FENCE){
 					if(!p.util.isInSpawn(target)){
 					if(gladiator.get(player) == null && gladiator.get(target) == null){
+						if(p.util.getKit(target) == sKits.Ninja){
+							p.util.ninja.put(target, player);
+						}
 					createArena(player, target, 0);
 					}
 					}

@@ -47,6 +47,7 @@ public class Utils {
 	    public ArrayList<Player> Invis = new ArrayList<Player>();
 	    
 	    public HashSet<Player> gladiatored = new HashSet<Player>();
+	    public HashSet<Player> jammed = new HashSet<Player>();
 	    
 	    public HashMap<Player, Integer> KillStreak = new HashMap<Player, Integer>();
 	  
@@ -168,6 +169,10 @@ public class Utils {
 	    		p.chat.inSpawnMessage(player);
 	    		return true;
 	    	}else
+		    if(this.jammed.contains(player)){
+		    	p.chat.sendMessagePlayer(player, "You have been jammed");
+		    	return true;
+		    }else
 	    	if(getTimeCD(player) <= 0){
 	    		return false;
 	    	}else{

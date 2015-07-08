@@ -64,7 +64,9 @@ public class Kits {
 		Frosty(new ItemStack(Material.ICE), 8000),
 		Grandpa(new ItemStack(Material.STICK), 6000),
 		Tank(new ItemStack(Material.TNT), 10000),
-		Jesus(new ItemStack(Material.BLAZE_POWDER), 20000);
+		Jesus(new ItemStack(Material.BLAZE_POWDER), 20000),
+		Disrupter(new ItemStack(Material.REDSTONE_TORCH_ON), 20000),
+		Glacier(new ItemStack(Material.ICE), 20000);
 		//Laser(new ItemStack(Material.REDSTONE_ORE), 20000);
 		
 		private ItemStack item;
@@ -292,6 +294,18 @@ public class Kits {
 		    lore.add("When you die you get resurrected with 2 hotbars of soup");
 			break;
 			
+		case Disrupter:
+		    lore.add("Right click your redstone torch");
+		    lore.add("To jam people their kits for 10 seconds");
+		    lore.add("In a 10 block radius");
+			break;
+			
+		case Glacier:
+		    lore.add("Right click your ice block");
+		    lore.add("To create a cube around yourself");
+		    lore.add("To protect yourself");
+			break;
+			
 	//	case Laser:
 		//    lore.add("Lock onto someone with your laser and laser him");
 		//	break;
@@ -455,6 +469,14 @@ public class Kits {
 			break;
 			
 		case Jesus:
+			break;
+			
+		case Disrupter:
+			item1 = new ItemStack(Material.REDSTONE_TORCH_ON);
+			break;
+			
+		case Glacier:
+			item1 = new ItemStack(Material.ICE);
 			break;
 			
 		//case Laser:

@@ -127,13 +127,6 @@ public class PlayerListener implements Listener {
 				}
 			}
 		    }
-		
-		@EventHandler
-		public void onPlayerCommand(PlayerCommandPreprocessEvent e){
-					if(e.getMessage().contains(":")){
-				e.setCancelled(true);
-					}
-		}
 	  
 		@EventHandler
 		  public void onJoin(PlayerPreLoginEvent e)

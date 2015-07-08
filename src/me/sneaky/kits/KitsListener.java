@@ -12,7 +12,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockState;
 import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -49,6 +52,7 @@ import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 
+import me.sneaky.LocationUtils;
 import me.sneaky.Main;
 import me.sneaky.events.custom.TimeSecondEvent;
 import me.sneaky.kits.Kits.sKits;
@@ -105,6 +109,10 @@ public class KitsListener implements Listener {
 				if(player.getItemInHand().getType() == Material.NETHER_STAR){
 					if(p.util.hasKit(player, sKits.Blink)){
 						if(!p.util.isOnCD(player)){
+							if(p.util.gladiatored.contains(player)){
+								p.chat.sendMessagePlayer(player, "Can't use blink in this arena");
+								return;
+							}
 							p.util.addCD(player, 10);
 							BlockIterator bItr = new BlockIterator(player, 7);
 							Block block;
@@ -363,7 +371,7 @@ public class KitsListener implements Listener {
 					}
 				
 				@EventHandler
-				  public void nuker2(EntityDamageEvent event) {  
+				  public void n(EntityDamageEvent event) {  
 
 				          if (event.getEntity() instanceof Player) {
 
@@ -482,8 +490,8 @@ public class KitsListener implements Listener {
 			        Player p = e.getPlayer();
 			        if (this.p.util.hasKit(p, sKits.Kangaroo)) {
 			            if ((e.getAction().name().contains("RIGHT")) ||(e.getAction().name().contains("LEFT")))  {
-			                e.setCancelled(true);
 			                if (p.getItemInHand().getType() == Material.FIREWORK) {
+				                e.setCancelled(true);
 			                    Vector v = p.getEyeLocation().getDirection();
 			                    if (!(e.getPlayer().getLocation().subtract(new Vector(0, 0.25, 0)).getBlock().getType() != Material.AIR)) {
 			                    jumps.put(p.getName(), jumps.get(p.getName()) != null ? jumps.get(p.getName()) + 1 : 1);
@@ -670,7 +678,10 @@ public class KitsListener implements Listener {
 
 				                          if (event.getCause() == DamageCause.FALL) {
 				                        	  
-				                        	  if(!sProtectionListener.user.contains(player)){
+				                        	  if(sProtectionListener.user.contains(player)){
+				                        		  
+				                        		  return;
+				                        	  }
 
 				                                  if (event.getDamage() > 4) {
 
@@ -694,16 +705,11 @@ public class KitsListener implements Listener {
 				                                          b = true;
 				                                          
 				                                          if(!p.util.isInSpawn(t)){
-				                                        	  if(p.util.hasKit(t, sKits.Transfer)){
-				                                        		  player.damage(6, t);
-				                                        		  p.chat.sendMessagePlayer(player, "You Tried To Stomp A Transfer!");
-				                                        	  }else{
 				                                          if (t.isSneaking()){
 				                                                  t.damage(4);
 				                                          }else{
 				                                                  t.damage(event.getDamage() / 1.5 , event.getEntity());
 				                                                  }
-				                                        	  }
 				                                  }
 				                          }
 				                                  }
@@ -714,7 +720,6 @@ public class KitsListener implements Listener {
 				                          }
 				                          }
 				                  }
-				          }
 				  }
 				
 				  @EventHandler
@@ -865,7 +870,7 @@ public class KitsListener implements Listener {
 													Entity pot = loc.getWorld().spawnEntity(loc, EntityType.SPLASH_POTION);
 													pot.setMetadata("WitchPot", new FixedMetadataValue(p, 6745639));
 												}
-												p.util.addNoMessageCD(player, 3);
+												p.util.addNoMessageCD(player, 5);
 												}
 											}
 										}
@@ -978,14 +983,13 @@ public class KitsListener implements Listener {
 											}
 										}
 										
-										HashSet<Player> anchor = new HashSet<Player>();
+										ArrayList<Player> anchor = new ArrayList<Player>();
 										
 										@EventHandler
 										  public void Anchor(EntityDamageByEntityEvent e) {
 											  if(e.getEntity() instanceof Player && e.getDamager() instanceof Player){
 												  Player player = (Player) e.getEntity();
 												  Player hitter = (Player) e.getDamager();
-												  if(!e.isCancelled()){
 													if(p.util.hasKit(hitter, sKits.Anchor)){
 														if(!anchor.contains(player)){
 														anchor.add(player);
@@ -996,7 +1000,6 @@ public class KitsListener implements Listener {
 														anchor.add(player);
 														}
 													}
-											  }
 											  }
 										  }
 										
@@ -1179,14 +1182,16 @@ public class KitsListener implements Listener {
 									        	if(!p.util.isInSpawn(e.getEntity().getLocation())){
 									        	if(!frosty.contains(e.getEntity())){
 									        	final Block b = e.getEntity().getLocation().getBlock();
-									        	if(b.getType() == Material.AIR){
-									        	b.setType(Material.SNOW);
-									        	p.getServer().getScheduler().scheduleSyncDelayedTask(p, new Runnable(){
-									        		public void run(){
-									        			b.setType(Material.AIR);
-									        		}
-									        	}, 20 * 3L);
-									        }
+									        	for(final Location loc : p.locUtil.getCircle(b.getLocation(), 3)){
+										        	if(loc.getBlock().getType() == Material.AIR){
+										        		loc.getBlock().setType(Material.SNOW);
+											        	p.getServer().getScheduler().scheduleSyncDelayedTask(p, new Runnable(){
+											        		public void run(){
+											        			loc.getBlock().setType(Material.AIR);
+											        		}
+											        	}, 20 * 3L);
+											        }
+									        	}
 									        }else{
 									        	frosty.remove(e.getEntity());
 									        }
@@ -1229,7 +1234,7 @@ public class KitsListener implements Listener {
 							                        final Player p = event.getEntity();
 							                        if(this.p.util.hasKit(p, sKits.Jesus)){
 							                                      p.getInventory().clear();
-							                                        Bukkit.broadcastMessage("�3�l" + p.getName() + " got resurrected!");
+							                                        Bukkit.broadcastMessage(p.getName() + " got resurrected!");
 							                            p.getWorld().playEffect(p.getLocation(), Effect.MOBSPAWNER_FLAMES, 10000000);
 							                            p.getWorld().playEffect(p.getLocation(), Effect.ENDER_SIGNAL, 10000000);
 							                                        p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 90, 100));
@@ -1266,5 +1271,88 @@ public class KitsListener implements Listener {
 							                                }
 							                }
 										
+											@EventHandler
+											public void Disrupter(PlayerInteractEvent e){
+												final Player player = e.getPlayer();
+												if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_AIR ||
+														e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK){
+													if(player.getItemInHand().getType() == Material.REDSTONE_TORCH_ON 
+															|| player.getItemInHand().getType() == Material.REDSTONE_TORCH_OFF){
+														if(p.util.hasKit(player, sKits.Disrupter)){
+														if(!p.util.isOnCD(player)){
+															for(Entity ent : player.getNearbyEntities(10, 10, 10)){
+																if(ent instanceof Player){
+																	final Player target = (Player) ent;
+																	p.util.jammed.add(target);
+																	target.playSound(target.getLocation(), Sound.ZOMBIE_UNFECT, 100, 1);
+														        	p.getServer().getScheduler().scheduleSyncDelayedTask(p, new Runnable(){
+														        		public void run(){
+														        			p.util.jammed.remove(target);
+														        		}
+														        	}, 20 * 10L);
+																}
+															}
+															p.util.addCD(player, 30);
+														}
+														}
+														}
+													}
+												}
+											
+											@EventHandler
+											public void Glacier(PlayerInteractEvent e){
+												final Player player = e.getPlayer();
+												if(e.getAction() == Action.RIGHT_CLICK_AIR ||
+														e.getAction() == Action.RIGHT_CLICK_BLOCK ){
+													if(player.getItemInHand().getType() == Material.ICE ){
+														if(p.util.hasKit(player, sKits.Glacier)){
+														if(!p.util.isOnCD(player)){
+															
+															Location loc1 = player.getLocation().getBlock().getRelative(BlockFace.UP).getRelative(BlockFace.UP).getRelative(BlockFace.WEST).getRelative(BlockFace.NORTH).getLocation();
+															Location loc2 = player.getLocation().getBlock().getRelative(BlockFace.DOWN).getRelative(BlockFace.EAST).getRelative(BlockFace.SOUTH).getLocation();
+															
+															final ArrayList<BlockState> bState = new ArrayList<BlockState>();
+															
+															for(Location loc : p.locUtil.getCuboid(loc1, loc2)){
+																bState.add(loc.getBlock().getState());
+																loc.getBlock().setType(Material.ICE);
+															}
+															
+															player.getLocation().getBlock().getRelative(BlockFace.UP).setType(Material.AIR);
+															player.getLocation().getBlock().setType(Material.AIR);
+															
+															player.setNoDamageTicks(20 * 3);
+															
+												        	p.getServer().getScheduler().scheduleSyncDelayedTask(p, new Runnable(){
+												        		public void run(){
+												        			for(BlockState b : bState){
+												        				b.setType(b.getType());
+												        				b.setData(b.getData());
+												        				bState.remove(b);
+												        			}
+												        			player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 5, 0));
+												        			player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 5, 0));
+												        		}
+												        	}, 20 * 3);
+															
+															for(Entity entity : player.getNearbyEntities(5, 5, 5)){
+																if(entity instanceof Player){
+																	Player ent = (Player)entity;
+																	ent.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 3, 0));
+																	ent.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 3, 0));
+																}
+															}
+															
+															player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20 * 3, 10));
+															
+															
+															
+															
+															p.util.addCD(player, 45);
+														}
+														}
+														}
+													}
+												}
 
 }

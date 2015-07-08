@@ -188,12 +188,14 @@ public class Main extends JavaPlugin implements Listener{
 		getServer().getPluginManager().registerEvents(new aMacro(this), this);
 		getServer().getPluginManager().registerEvents(new aAutosoup(this), this);
 		
+		getServer().getPluginManager().registerEvents(new KitGUI(this), this);
 		
-		getServer().getPluginManager().registerEvents(new sProtectionListener(this), this);
 
 		getServer().getPluginManager().registerEvents(new KitsListener(this), this);
 		getServer().getPluginManager().registerEvents(new GladiatorListener(this), this);
 		getServer().getPluginManager().registerEvents(new SatanListener(this), this);
+		
+		getServer().getPluginManager().registerEvents(new sProtectionListener(this), this);
 		
 		getServer().getPluginManager().registerEvents(new Listener1v1(this), this);
 		
@@ -213,7 +215,7 @@ public class Main extends JavaPlugin implements Listener{
 		getServer().getPluginManager().registerEvents(new Stats(this), this);
 		getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
 		getServer().getPluginManager().registerEvents(new diaBlockListener(this), this);
-		getServer().getPluginManager().registerEvents(new KitGUI(this), this);
+		
 		
 		getServer().getPluginManager().registerEvents(new MuteChat(this), this);
 		

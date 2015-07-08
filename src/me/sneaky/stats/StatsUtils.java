@@ -66,6 +66,15 @@ public class StatsUtils {
 	  }
 	  
 	  public void addCredits(Player player, int amnt) throws Exception{
+		  if(player.hasPermission("skits.vip")){
+			  amnt = (int) (amnt * 1.5);
+		  }
+		  if(player.hasPermission("skits.mvp")){
+			  amnt = (int) (amnt * 1.75);
+		  }
+		  if(player.hasPermission("skits.pro")){
+			  amnt = (int) (amnt * 2);
+		  }
 		  Config.getStatsConfig().set("stats." + player.getUniqueId().toString() + ".credits", getCredits(player) + amnt);
 		  Config.saveStatsFile();
 	  }
